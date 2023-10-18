@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+
+    <script>
+        const showInfo = () => {
+            const emailIcon = document.querySelector("#email-icon");
+            // const phoneIcon = document.querySelector("#phone-icon");
+            // const linkedinIcon = document.querySelector("#linkedin-icon");
+            // const webIcon = document.querySelector("#web-icon");
+            // const behanceIcon = document.querySelector("#behance-icon");
+            // const dribbbleIcon = document.querySelector("#dribbble-icon");
+            // const twitterIcon = document.querySelector("#twitter-icon");
+            // const instagramIcon = document.querySelector("#instagram-icon");
+            // const userIcon = document.querySelector("#user-icon");
+
+            setTimeout(() => {
+                emailIcon.setAttribute("visible", true);
+            }, 2000);
+        }
+        AFRAME.registerComponent('mytarget', {
+            init: function () {
+                this.el.addEventListener('targetFound', event => {
+                    setTimeout(() => {
+                        showInfo();
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene mindar-image="imageTargetSrc: ./newtargets.mind;" color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
+
+        <a-assets>
+            <img id="email-icon" src="./icon/email.png">
+            <img id="phone-icon" src="./icon/phone-call.png">
+            <img id="linkedin-icon" src="./icon/linkedin.png">
+            <img id="web-icon" src="./icon/web.png">
+            <img id="behance-icon" src="./icon/behance.png">
+            <img id="dribbble-icon" src="./icon/dribbble.png">
+            <img id="twitter-icon" src="./icon/twitter.png">
+            <img id="instagram-icon" src="./icon/instagram.png">
+            <img id="user-icon" src="./icon/userImage.png">
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity mytarget mindar-image-target="targetIndex: 1">
+
+            <a-text id="text-title" visible="true" value="Dhruv Khatri" color="white" scale="0.7 0.7 0.7"
+                position="-0.44 0.7 0"></a-text>
+
+            <a-plane mytarget position="-0.01 0.2 0" color="transparent" opacity="0">
+                <a-image visible="false" scale="0.21 0.21 0.21" position="-0.65 0.1 0" src="#email-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.2 0" src="#phone-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.5 0" src="#linkedin-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.8 0" src="#web-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+            </a-plane>
+
+            <a-circle src="#user-icon" radius="0.5" position="0.01 0 0" scale="0 0 0" rotation="0 0 0"
+                animation="property: scale; to: 1 1 1; dur: 5000"></a-circle>
+
+            <a-plane position="1.37 0.2 0" color="transparent" opacity="0">
+                <a-image scale="0.21 0.21 0.21" position="-0.65 0.1 0" src="#behance-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.2 0" src="#dribbble-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.5 0" src="#twitter-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.8 0" src="#instagram-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
+            </a-plane>
+
+            <a-text id="text-title" visible="true" value="Designer" color="white" scale="0.7 0.7 0.7"
+                position="-0.29 -0.7 0"></a-text>
+
+        </a-entity>
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-text id="text-title" visible="true" value="Karan Panchal" color="white" scale="0.7 0.7 0.7"
+                position="-0.5 0.7 0"></a-text>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
