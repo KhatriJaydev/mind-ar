@@ -58,7 +58,24 @@
             showIcon(dribbbleImage, 1200);
             showIcon(twitterImage, 1800);
             showIcon(instagramImage, 2400);
+
+            const openSelectedLink = (link, value) => {
+                link.addEventListener('click', function (evt) {
+                    window.location.href = value;
+                });
+            };
+
+            openSelectedLink(emailImage, 'mailto:dhruv.khatri@appunik.com');
+            openSelectedLink(phoneImage, 'tel:123456789');
+            openSelectedLink(linkedinImage, 'https://www.linkedin.com/in/dhruvkhatri1901');
+            openSelectedLink(webImage, 'https://appunik.com/');
+            openSelectedLink(behanceImage, 'https://www.behance.net/');
+            openSelectedLink(dribbbleImage, 'https://dribbble.com/');
+            openSelectedLink(twitterImage, 'https://twitter.com/login?lang=en');
+            openSelectedLink(instagramImage, 'https://www.instagram.com/');
         }
+
+
         AFRAME.registerComponent('mytarget', {
             init: function () {
                 this.el.addEventListener('targetFound', event => {
@@ -88,8 +105,9 @@
             <img id="user-icon" src="./icon/users-image/dhruv-khatri.jpg">
         </a-assets>
 
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
+            raycaster="far: 10000; objects: .clickable">
+        </a-camera>
         <a-entity mytarget mindar-image-target="targetIndex: 1">
 
             <a-text id="text-title-dk" visible="false" value="Dhruv Khatri" color="white" scale="0.7 0.7 0.7"
@@ -97,19 +115,20 @@
                 animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
 
             <a-plane position="-0.01 0.2 0" color="transparent" opacity="0">
-                <a-image visible="false" id="email-image" scale="0.21 0.21 0.21" position="-0.65 0.1 0"
-                    src="#email-icon"
+                <a-image class="clickable" visible="false" id="email-image" scale="0.21 0.21 0.21"
+                    position="-0.65 0.1 0" src="#email-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image visible="false" id="phone-image" scale="0.21 0.21 0.21" position="-0.65 -0.2 0"
-                    src="#phone-icon"
+                <a-image class="clickable" visible="false" id="phone-image" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.2 0" src="#phone-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image visible="false" id="linkedin-image" scale="0.21 0.21 0.21" position="-0.65 -0.5 0"
-                    src="#linkedin-icon"
+                <a-image class="clickable" visible="false" id="linkedin-image" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.5 0" src="#linkedin-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image visible="false" id="web-image" scale="0.21 0.21 0.21" position="-0.65 -0.8 0" src="#web-icon"
+                <a-image class="clickable" visible="false" id="web-image" scale="0.21 0.21 0.21" position="-0.65 -0.8 0"
+                    src="#web-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
             </a-plane>
 
@@ -118,20 +137,20 @@
                 rotation="0 0 0"></a-circle>
 
             <a-plane position="1.33 0.2 0" color="transparent" opacity="0">
-                <a-image visible="false" id="behance-image" scale="0.21 0.21 0.21" position="-0.65 0.1 0"
-                    src="#behance-icon"
+                <a-image class="clickable" visible="false" id="behance-image" scale="0.21 0.21 0.21"
+                    position="-0.65 0.1 0" src="#behance-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image visible="false" id="dribbble-image" scale="0.21 0.21 0.21" position="-0.65 -0.2 0"
-                    src="#dribbble-icon"
+                <a-image class="clickable" visible="false" id="dribbble-image" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.2 0" src="#dribbble-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image visible="false" id="twitter-image" scale="0.21 0.21 0.21" position="-0.65 -0.5 0"
-                    src="#twitter-icon"
+                <a-image class="clickable" visible="false" id="twitter-image" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.5 0" src="#twitter-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image visible="false" id="instagram-image" scale="0.21 0.21 0.21" position="-0.65 -0.8 0"
-                    src="#instagram-icon"
+                <a-image class="clickable" visible="false" id="instagram-image" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.8 0" src="#instagram-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
             </a-plane>
 
