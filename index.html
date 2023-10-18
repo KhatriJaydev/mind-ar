@@ -8,26 +8,36 @@
 
     <script>
         const showInfo = () => {
-            const emailIcon = document.querySelector("#email-icon");
-            // const phoneIcon = document.querySelector("#phone-icon");
-            // const linkedinIcon = document.querySelector("#linkedin-icon");
-            // const webIcon = document.querySelector("#web-icon");
-            // const behanceIcon = document.querySelector("#behance-icon");
-            // const dribbbleIcon = document.querySelector("#dribbble-icon");
-            // const twitterIcon = document.querySelector("#twitter-icon");
-            // const instagramIcon = document.querySelector("#instagram-icon");
-            // const userIcon = document.querySelector("#user-icon");
+            const emailImage = document.querySelector("#email-image");
+            const phoneImage = document.querySelector("#phone-image");
+            const linkedinImage = document.querySelector("#linkedin-image");
+            const webImage = document.querySelector("#web-image");
+            const behanceImage = document.querySelector("#behance-image");
+            const dribbbleImage = document.querySelector("#dribbble-image");
+            const twitterImage = document.querySelector("#twitter-image");
+            const instagramImage = document.querySelector("#instagram-image");
 
-            setTimeout(() => {
-                emailIcon.setAttribute("visible", true);
-            }, 2000);
+            const showIcon = (icon, delay) => {
+                setTimeout(() => {
+                    icon.setAttribute("visible", true);
+                }, delay);
+            };
+
+            showIcon(emailImage, 600);
+            showIcon(phoneImage, 1200);
+            showIcon(linkedinImage, 1800);
+            showIcon(webImage, 2400);
+            showIcon(behanceImage, 600);
+            showIcon(dribbbleImage, 1200);
+            showIcon(twitterImage, 1800);
+            showIcon(instagramImage, 2400);
         }
         AFRAME.registerComponent('mytarget', {
             init: function () {
                 this.el.addEventListener('targetFound', event => {
                     setTimeout(() => {
                         showInfo();
-                    }, 1000);
+                    }, 300);
                 });
             }
         });
@@ -53,33 +63,47 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity mytarget mindar-image-target="targetIndex: 1">
+        <a-entity mytarget mindar-image-target="targetIndex: 1" mytarget>
 
             <a-text id="text-title" visible="true" value="Dhruv Khatri" color="white" scale="0.7 0.7 0.7"
                 position="-0.44 0.7 0"></a-text>
 
-            <a-plane mytarget position="-0.01 0.2 0" color="transparent" opacity="0">
-                <a-image visible="false" scale="0.21 0.21 0.21" position="-0.65 0.1 0" src="#email-icon"
+            <a-plane position="-0.01 0.2 0" color="transparent" opacity="0">
+                <a-image visible="false" id="email-image" scale="0.21 0.21 0.21" position="-0.65 0.1 0"
+                    src="#email-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.2 0" src="#phone-icon"
+
+                <a-image visible="false" id="phone-image" scale="0.21 0.21 0.21" position="-0.65 -0.2 0"
+                    src="#phone-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.5 0" src="#linkedin-icon"
+
+                <a-image visible="false" id="linkedin-image" scale="0.21 0.21 0.21" position="-0.65 -0.5 0"
+                    src="#linkedin-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.8 0" src="#web-icon"
+
+                <a-image visible="false" id="web-image" scale="0.21 0.21 0.21" position="-0.65 -0.8 0" src="#web-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
             </a-plane>
+
 
             <a-circle src="#user-icon" radius="0.5" position="0.01 0 0" scale="0 0 0" rotation="0 0 0"
                 animation="property: scale; to: 1 1 1; dur: 5000"></a-circle>
 
             <a-plane position="1.37 0.2 0" color="transparent" opacity="0">
-                <a-image scale="0.21 0.21 0.21" position="-0.65 0.1 0" src="#behance-icon"
+                <a-image visible="false" id="behance-image" scale="0.21 0.21 0.21" position="-0.65 0.1 0"
+                    src="#behance-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.2 0" src="#dribbble-icon"
+
+                <a-image visible="false" id="dribbble-image" scale="0.21 0.21 0.21" position="-0.65 -0.2 0"
+                    src="#dribbble-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.5 0" src="#twitter-icon"
+
+                <a-image visible="false" id="twitter-image" scale="0.21 0.21 0.21" position="-0.65 -0.5 0"
+                    src="#twitter-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-                <a-image scale="0.21 0.21 0.21" position="-0.65 -0.8 0" src="#instagram-icon"
+
+                <a-image visible="false" id="instagram-image" scale="0.21 0.21 0.21" position="-0.65 -0.8 0"
+                    src="#instagram-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
             </a-plane>
 
