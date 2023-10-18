@@ -31,9 +31,20 @@
                 setTimeout(() => {
                     icon.setAttribute("visible", true);
                     icon.setAttribute("animation__scale", "property: scale; to: 1 1 1; dur: 3000; easing: easeInOutQuint;");
-                    textTitleDK.setAttribute("visible", true);
-                    textValue.setAttribute("visible", true);
+                    showTextWithFade(textTitleDK, 500);
+                    showTextWithFade(textValue, 1000);
+                }, delay);
+            };
 
+            const showTextWithFade = (textElement, delay) => {
+                setTimeout(() => {
+                    textElement.setAttribute("visible", true);
+                    textElement.setAttribute("animation__fade", {
+                        property: "text.opacity",
+                        to: 1,
+                        dur: 1000,
+                        easing: "linear"
+                    });
                 }, delay);
             };
 
@@ -82,7 +93,8 @@
         <a-entity mytarget mindar-image-target="targetIndex: 1">
 
             <a-text id="text-title-dk" visible="false" value="Dhruv Khatri" color="white" scale="0.7 0.7 0.7"
-                position="-0.44 0.7 0"></a-text>
+                position="-0.44 0.7 0"
+                animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
 
             <a-plane position="-0.01 0.2 0" color="transparent" opacity="0">
                 <a-image visible="false" id="email-image" scale="0.21 0.21 0.21" position="-0.65 0.1 0"
@@ -124,8 +136,8 @@
             </a-plane>
 
             <a-text id="text-value" visible="false" value="iOS Developer" color="white" scale="0.6 0.6 0.6"
-                position="-0.39 -0.7 0"></a-text>
-
+                position="-0.39 -0.7 0"
+                animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 0">
