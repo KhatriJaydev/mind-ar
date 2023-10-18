@@ -9,6 +9,7 @@
 
     <script>
         const showInfo = () => {
+            const userImage = document.querySelector("#user-image");
             const emailImage = document.querySelector("#email-image");
             const phoneImage = document.querySelector("#phone-image");
             const linkedinImage = document.querySelector("#linkedin-image");
@@ -17,7 +18,6 @@
             const dribbbleImage = document.querySelector("#dribbble-image");
             const twitterImage = document.querySelector("#twitter-image");
             const instagramImage = document.querySelector("#instagram-image");
-            const userImage = document.querySelector("#user-image");
 
             const showIcon = (icon, delay) => {
                 setTimeout(() => {
@@ -25,7 +25,7 @@
                 }, delay);
             };
 
-            showIcon(userImage, 300);
+            showIcon(userImage, 400);
             showIcon(emailImage, 600);
             showIcon(phoneImage, 1200);
             showIcon(linkedinImage, 1800);
@@ -66,7 +66,7 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity mytarget mindar-image-target="targetIndex: 1" mytarget>
+        <a-entity mytarget mindar-image-target="targetIndex: 1">
 
             <a-text id="text-title" visible="true" value="Dhruv Khatri" color="white" scale="0.7 0.7 0.7"
                 position="-0.44 0.7 0"></a-text>
@@ -89,8 +89,8 @@
             </a-plane>
 
 
-            <a-circle id="user-image" src="#user-icon" radius="0.5" position="0.01 0 0" scale="0 0 0" rotation="0 0 0"
-                animation="property: scale; to: 1 1 1; dur: 5000"></a-circle>
+            <a-circle visible="false" id="user-image" src="#user-icon" radius="0.5" position="0.01 0 0" scale="0 0 0"
+                rotation="0 0 0" animation="property: scale; to: 1 1 1; dur: 5000"></a-circle>
 
             <a-plane position="1.37 0.2 0" color="transparent" opacity="0">
                 <a-image visible="false" id="behance-image" scale="0.21 0.21 0.21" position="-0.65 0.1 0"
@@ -114,6 +114,7 @@
                 position="-0.29 -0.7 0"></a-text>
 
         </a-entity>
+
         <a-entity mindar-image-target="targetIndex: 0">
             <a-text id="text-title" visible="true" value="Karan Panchal" color="white" scale="0.7 0.7 0.7"
                 position="-0.5 0.7 0"></a-text>
