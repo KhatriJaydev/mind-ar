@@ -9,19 +9,20 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <link rel="stylesheet" href="style.css">
     <script>
-        const showInfo = () => {
-            const userImage = document.querySelector("#user-image");
-            const emailImage = document.querySelector("#email-image");
-            const phoneImage = document.querySelector("#phone-image");
-            const linkedinImage = document.querySelector("#linkedin-image");
-            const webImage = document.querySelector("#web-image");
-            const behanceImage = document.querySelector("#behance-image");
-            const dribbbleImage = document.querySelector("#dribbble-image");
-            const twitterImage = document.querySelector("#twitter-image");
-            const instagramImage = document.querySelector("#instagram-image");
-            const textTitleDK = document.querySelector("#text-title-dk");
-            const textValue = document.querySelector("#text-value");
-
+        const showInfo = (
+            userImage,
+            emailImage,
+            phoneImage,
+            linkedinImage,
+            webImage,
+            behanceImage,
+            dribbbleImage,
+            twitterImage,
+            instagramImage,
+            textTitle,
+            textValue,
+            links
+        ) => {
             const showIcon = (icon, delay) => {
                 setTimeout(() => {
                     icon.setAttribute("visible", true);
@@ -31,8 +32,11 @@
             const userIconVisible = (icon, delay) => {
                 setTimeout(() => {
                     icon.setAttribute("visible", true);
-                    icon.setAttribute("animation__scale", "property: scale; to: 1 1 1; dur: 3000; easing: easeInOutQuint;");
-                    showTextWithFade(textTitleDK, 500);
+                    icon.setAttribute(
+                        "animation__scale",
+                        "property: scale; to: 1 1 1; dur: 3000; easing: easeInOutQuint;"
+                    );
+                    showTextWithFade(textTitle, 500);
                     showTextWithFade(textValue, 1000);
                 }, delay);
             };
@@ -44,7 +48,7 @@
                         property: "text.opacity",
                         to: 1,
                         dur: 1000,
-                        easing: "linear"
+                        easing: "linear",
                     });
                 }, delay);
             };
@@ -61,31 +65,93 @@
             showIcon(instagramImage, 2400);
 
             const openSelectedLink = (link, value) => {
-                link.addEventListener('click', function (evt) {
-                    window.location.href = value;
+                link.addEventListener("click", function (evt) {
+                    if (link === emailImage || link === phoneImage) {
+                        window.location.href = value;
+                    } else {
+                        window.open(value, "_blank");
+                    }
                 });
             };
 
-            openSelectedLink(emailImage, 'mailto:dhruv.khatri@appunik.com');
-            openSelectedLink(phoneImage, 'tel:123456789');
-            openSelectedLink(linkedinImage, 'https://www.linkedin.com/in/dhruvkhatri1901');
-            openSelectedLink(webImage, 'https://appunik.com/');
-            openSelectedLink(behanceImage, 'https://www.behance.net/');
-            openSelectedLink(dribbbleImage, 'https://dribbble.com/');
-            openSelectedLink(twitterImage, 'https://twitter.com/login?lang=en');
-            openSelectedLink(instagramImage, 'https://www.instagram.com/');
-        }
+            openSelectedLink(emailImage, links.email);
+            openSelectedLink(phoneImage, links.phone);
+            openSelectedLink(linkedinImage, links.linkedin);
+            openSelectedLink(webImage, links.web);
+            openSelectedLink(behanceImage, links.behance);
+            openSelectedLink(dribbbleImage, links.dribbble);
+            openSelectedLink(twitterImage, links.twitter);
+            openSelectedLink(instagramImage, links.instagram);
+        };
 
+        const contactLinksDK = {
+            email: "mailto:dhruv.khatri@appunik.com",
+            phone: "tel:1234567890",
+            linkedin: "https://www.linkedin.com/in/dhruvkhatri1901",
+            web: "https://appunik.com/",
+            behance: "https://www.behance.net/",
+            dribbble: "https://dribbble.com/",
+            twitter: "https://twitter.com/login?lang=en",
+            instagram: "https://www.instagram.com/",
+        };
 
-        AFRAME.registerComponent('mytarget', {
+        const contactLinksKP = {
+            email: "mailto:karan.panchal@appunik.com",
+            phone: "tel:1234567890",
+            linkedin: "https://www.linkedin.com/in/karan-panchal-1410/",
+            web: "https://appunik.com/",
+            behance: "https://www.behance.net/",
+            dribbble: "https://dribbble.com/",
+            twitter: "https://twitter.com/login?lang=en",
+            instagram: "https://www.instagram.com/",
+        };
+
+        AFRAME.registerComponent("mytargetdk", {
             init: function () {
-                this.el.addEventListener('targetFound', event => {
+                this.el.addEventListener("targetFound", (event) => {
                     setTimeout(() => {
-                        showInfo();
+                        showInfo(
+                            document.querySelector("#user-image-dk"),
+                            document.querySelector("#email-image-dk"),
+                            document.querySelector("#phone-image-dk"),
+                            document.querySelector("#linkedin-image-dk"),
+                            document.querySelector("#web-image-dk"),
+                            document.querySelector("#behance-image-dk"),
+                            document.querySelector("#dribbble-image-dk"),
+                            document.querySelector("#twitter-image-dk"),
+                            document.querySelector("#instagram-image-dk"),
+                            document.querySelector("#text-title-dk"),
+                            document.querySelector("#text-value-dk"),
+                            contactLinksDK
+                        );
                     }, 300);
                 });
-            }
+            },
         });
+
+        AFRAME.registerComponent("mytargetkp", {
+            init: function () {
+                this.el.addEventListener("targetFound", (event) => {
+                    setTimeout(() => {
+                        showInfo(
+                            document.querySelector("#user-image-kp"),
+                            document.querySelector("#email-image-kp"),
+                            document.querySelector("#phone-image-kp"),
+                            document.querySelector("#linkedin-image-kp"),
+                            document.querySelector("#web-image-kp"),
+                            document.querySelector("#behance-image-kp"),
+                            document.querySelector("#dribbble-image-kp"),
+                            document.querySelector("#twitter-image-kp"),
+                            document.querySelector("#instagram-image-kp"),
+                            document.querySelector("#text-title-kp"),
+                            document.querySelector("#text-value-kp"),
+                            contactLinksKP
+                        );
+                    }, 300);
+                });
+            },
+        });
+
     </script>
 </head>
 
@@ -109,63 +175,106 @@
             <img id="dribbble-icon" src="./icon/dribbble.png">
             <img id="twitter-icon" src="./icon/twitter.png">
             <img id="instagram-icon" src="./icon/instagram.png">
-            <img id="user-icon" src="./icon/users-image/dhruv-khatri.jpg">
+            <img id="user-icon-dk" src="./icon/users-image/dhruv-khatri.jpg">
+            <img id="user-icon-kp" src="./icon/users-image/karan-panchal.jpg">
         </a-assets>
 
-        <a-entity mytarget mindar-image-target="targetIndex: 1">
-
+        <a-entity mytargetdk mindar-image-target="targetIndex: 1">
             <a-text id="text-title-dk" visible="false" value="Dhruv Khatri" color="white" scale="0.7 0.7 0.7"
                 position="-0.44 0.7 0" rotation="0 0 1.9"
                 animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
 
             <a-plane position="-0.01 0.2 0" color="transparent" opacity="0">
-                <a-image class="clickable" visible="false" id="email-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="email-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 0.1 0" src="#email-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="phone-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="phone-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 -0.2 0" src="#phone-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="linkedin-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="linkedin-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 -0.5 0" src="#linkedin-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="web-image" scale="0.21 0.21 0.21" position="-0.65 -0.8 0"
-                    src="#web-icon"
+                <a-image class="clickable" visible="false" id="web-image-dk" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.8 0" src="#web-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
             </a-plane>
 
-
-            <a-circle visible="false" id="user-image" src="#user-icon" radius="0.49" position="0.01 0 0" scale="0 0 0"
-                rotation="0 0 0"></a-circle>
+            <a-circle visible="false" id="user-image-dk" src="#user-icon-dk" radius="0.49" position="0.01 0 0"
+                scale="0 0 0" rotation="0 0 0"></a-circle>
 
             <a-plane position="1.33 0.2 0" color="transparent" opacity="0">
-                <a-image class="clickable" visible="false" id="behance-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="behance-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 0.1 0" src="#behance-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="dribbble-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="dribbble-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 -0.2 0" src="#dribbble-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="twitter-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="twitter-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 -0.5 0" src="#twitter-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="instagram-image" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="instagram-image-dk" scale="0.21 0.21 0.21"
                     position="-0.65 -0.8 0" src="#instagram-icon"
                     animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
             </a-plane>
 
-            <a-text id="text-value" visible="false" value="iOS Developer" color="white" scale="0.6 0.6 0.6"
+            <a-text id="text-value-dk" visible="false" value="iOS Developer" color="white" scale="0.6 0.6 0.6"
                 position="-0.39 -0.7 0" rotation="0 0 1.9"
                 animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 0">
-            <a-text id="text-title" visible="true" value="Karan Panchal" color="white" scale="0.7 0.7 0.7"
-                position="-0.5 0.7 0"></a-text>
+        <a-entity mytargetkp mindar-image-target="targetIndex: 0">
+            <a-text id="text-title-kp" visible="false" value="Karan Panchal" color="white" scale="0.7 0.7 0.7"
+                position="-0.5 0.7 0"
+                animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
+
+            <a-plane position="-0.01 0.2 0" color="transparent" opacity="0">
+                <a-image class="clickable" visible="false" id="email-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 0.1 0" src="#email-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+
+                <a-image class="clickable" visible="false" id="phone-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.2 0" src="#phone-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+
+                <a-image class="clickable" visible="false" id="linkedin-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.5 0" src="#linkedin-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+
+                <a-image class="clickable" visible="false" id="web-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.8 0" src="#web-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+            </a-plane>
+
+            <a-circle visible="false" id="user-image-kp" src="#user-icon-kp" radius="0.49" position="0.01 0 0"
+                scale="0 0 0" rotation="0 0 0"></a-circle>
+
+            <a-plane position="1.33 0.2 0" color="transparent" opacity="0">
+                <a-image class="clickable" visible="false" id="behance-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 0.1 0" src="#behance-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+
+                <a-image class="clickable" visible="false" id="dribbble-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.2 0" src="#dribbble-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+
+                <a-image class="clickable" visible="false" id="twitter-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.5 0" src="#twitter-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+
+                <a-image class="clickable" visible="false" id="instagram-image-kp" scale="0.21 0.21 0.21"
+                    position="-0.65 -0.8 0" src="#instagram-icon"
+                    animation="property: scale; to: 0.15 0.15 0.15; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"></a-image>
+            </a-plane>
+
+            <a-text id="text-value-kp" visible="false" value="Designer" color="white" scale="0.6 0.6 0.6"
+                position="-0.39 -0.7 0" rotation="0 0 1.9"
+                animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
         </a-entity>
 
         <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
