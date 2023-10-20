@@ -97,23 +97,23 @@
                 }, delay);
             };
 
-            // showIcon(emailImage, 600);
-            // showIcon(phoneImage, 1200);
-            // showIcon(linkedinImage, 1800);
-            // showIcon(webImage, 2400);
-            // showIcon(behanceImage, 5000);
-            // showIcon(dribbbleImage, 4200);
-            // showIcon(twitterImage, 3600);
-            // showIcon(instagramImage, 3000);
+            showIcon(emailImage, 600);
+            showIcon(phoneImage, 1200);
+            showIcon(linkedinImage, 1800);
+            showIcon(webImage, 2400);
+            showIcon(behanceImage, 5000);
+            showIcon(dribbbleImage, 4200);
+            showIcon(twitterImage, 3600);
+            showIcon(instagramImage, 3000);
 
-            showIcon(emailImage, 100);
-            showIcon(phoneImage, 100);
-            showIcon(linkedinImage, 100);
-            showIcon(webImage, 100);
-            showIcon(behanceImage, 100);
-            showIcon(dribbbleImage, 100);
-            showIcon(twitterImage, 100);
-            showIcon(instagramImage, 100);
+            // showIcon(emailImage, 100);
+            // showIcon(phoneImage, 100);
+            // showIcon(linkedinImage, 100);
+            // showIcon(webImage, 100);
+            // showIcon(behanceImage, 100);
+            // showIcon(dribbbleImage, 100);
+            // showIcon(twitterImage, 100);
+            // showIcon(instagramImage, 100);
 
 
             const userIconVisible = (icon, delay) => {
@@ -121,7 +121,7 @@
                     icon.setAttribute("visible", true);
                     icon.setAttribute(
                         "animation__scale",
-                        "property: scale; to: 1 1 1; dur: 100; easing: easeInOutQuint;"
+                        "property: scale; to: 1 1 1; dur: 1000; easing: easeInOutQuint;"
                     );
                     showTextWithFade(textTitle, 500);
                     showTextWithFade(textValue, 1000);
@@ -134,7 +134,7 @@
                 setTimeout(() => {
                     textElement.setAttribute("visible", true);
                     textElement.setAttribute("animation__fade", {
-                        property: "text.opacity",
+                        property: "material.opacity",
                         to: 1,
                         dur: 1000,
                         easing: "linear",
@@ -188,6 +188,8 @@
             <img id="user-icon-dk" src="./icon/users-image/dhruv-khatri.jpg">
             <img id="user-icon-kp" src="./icon/users-image/karan-panchal.jpg">
             <img id="kp-text" src="./icon/users-image/KaranPanchal-text.png">
+            <img id="kp-background" src="./icon/users-image/K-front.png">
+            <img id="kp-design" src="./icon/users-image/designer-text.png">
         </a-assets>
 
         <a-entity mytargetdk mindar-image-target="targetIndex: 1">
@@ -196,19 +198,19 @@
                 animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
 
             <a-plane position="-0.01 0.2 0" color="transparent" opacity="0">
-                <a-image class="clickable" visible="false" id="email-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="email-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 0.1 0" src="#email-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="phone-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="phone-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 -0.2 0" src="#phone-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="linkedin-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="linkedin-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 -0.5 0" src="#linkedin-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="web-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="web-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 -0.8 0" src="#web-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
             </a-plane>
@@ -217,19 +219,19 @@
                 scale="0 0 0" rotation="0 0 0"></a-circle>
 
             <a-plane position="1.33 0.2 0" color="transparent" opacity="0">
-                <a-image class="clickable" visible="false" id="behance-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="behance-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 0.1 0" src="#behance-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="dribbble-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="dribbble-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 -0.2 0" src="#dribbble-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="twitter-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="twitter-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 -0.5 0" src="#twitter-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="instagram-image-dk" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="instagram-image-dk" scale="0.19 0.19 0.19"
                     position="-0.65 -0.8 0" src="#instagram-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
             </a-plane>
@@ -240,54 +242,65 @@
         </a-entity>
 
         <a-entity mytargetkp mindar-image-target="targetIndex: 0">
+            <!-- <a-entity geometry="primitive: ring; radiusInner: 0.35; radiusOuter: 0.54"
+                material="side: double; color: #fff; opacity: 0.5" position="0 -0.01 -0.1">
+            </a-entity> -->
+
+
+            <a-plane color="transparent" opacity="0" position="0 0 -0.03">
+                <a-image src="#kp-background" position="-0.03 0.01 -0.1" height="1.90" width="1.15"></a-image>
+            </a-plane>
             <!-- <a-text align="center" id="text-title-kp" visible="false" value="Karan Panchal" color="white"
                 scale="0.7 0.7 0.7" position="0 0.7 0"
                 animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text> -->
-            <a-image src="#kp-text" position="0 0.7 0" height="0.11" rotation="0 0 0.2"></a-image>
+            <a-image id="text-title-kp" visible="false" src="#kp-text" position="0 0.7 0" height="0.11"
+                rotation="0 0 0.2"
+                animation__fade="property: material.opacity; from: 0; dur: 1000; easing: linear;"></a-image>
 
-            <a-plane position="0.22 0.35 0" color="transparent" opacity="0">
-                <a-image class="clickable" visible="false" id="email-image-kp" scale="0.21 0.21 0.21"
+            <a-plane position="0.19 0.35 0" color="transparent" opacity="0">
+                <a-image class="clickable" visible="false" id="email-image-kp" scale="0.19 0.19 0.19"
                     position="-0.35 0.1 0" src="#email-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="phone-image-kp" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="phone-image-kp" scale="0.19 0.19 0.19"
                     position="-0.63 -0.19 0" src="#phone-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="linkedin-image-kp" scale="0.21 0.21 0.21"
-                    position="-0.65 -0.5 0" src="#linkedin-icon"
+                <a-image class="clickable" visible="false" id="linkedin-image-kp" scale="0.19 0.19 0.19"
+                    position="-0.63 -0.5 0" src="#linkedin-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="web-image-kp" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="web-image-kp" scale="0.19 0.19 0.19"
                     position="-0.35 -0.75 0" src="#web-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
             </a-plane>
 
-            <a-circle visible="false" id="user-image-kp" src="#user-icon-kp" radius="0.28" 
-            position="0.01 0.01 0"
+            <a-circle visible="false" id="user-image-kp" src="#user-icon-kp" radius="0.30" position="-0.01 0.031 0"
                 scale="0 0 0" rotation="0 0 0"></a-circle>
 
-            <a-plane position="1.13 0.35 0.001" color="transparent" opacity="0">
-                <a-image class="clickable" visible="false" id="behance-image-kp" scale="0.21 0.21 0.21"
+            <a-plane position="1.11 0.35 0.001" color="transparent" opacity="0">
+                <a-image class="clickable" visible="false" id="behance-image-kp" scale="0.19 0.19 0.19"
                     position="-0.89 0.08 0" src="#behance-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="dribbble-image-kp" scale="0.21 0.21 0.21"
+                <a-image class="clickable" visible="false" id="dribbble-image-kp" scale="0.19 0.19 0.19"
                     position="-0.68 -0.2 0" src="#dribbble-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="twitter-image-kp" scale="0.21 0.21 0.21"
-                    position="-0.65 -0.5 0" src="#twitter-icon"
+                <a-image class="clickable" visible="false" id="twitter-image-kp" scale="0.19 0.19 0.19"
+                    position="-0.68 -0.5 0" src="#twitter-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
 
-                <a-image class="clickable" visible="false" id="instagram-image-kp" scale="0.21 0.21 0.21"
-                    position="-0.88 -0.72 0" src="#instagram-icon"
+                <a-image class="clickable" visible="false" id="instagram-image-kp" scale="0.19 0.19 0.19"
+                    position="-0.89 -0.75 0" src="#instagram-icon"
                     animation="property: scale; to: 0.14 0.14 0.14; dur: 1000; easing: easeInSine; loop: true; dir: alternate"></a-image>
             </a-plane>
 
-            <a-text align="center" id="text-value-kp" visible="false" value="Designer" color="white" scale="0.6 0.6 0.6"
+            <!-- <a-text align="center" id="text-value-kp" visible="false" value="Designer" color="white" scale="0.6 0.6 0.6"
                 position="0 -0.7 0" rotation="0 0 0"
-                animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text>
+                animation__fade="property: text.opacity; from: 0; to: 1; dur: 1000; easing: linear;"></a-text> -->
+            <a-image id="text-value-kp" visible="false" src="#kp-design" position="0 -0.7 0" height="0.13" width="0.5"
+                animation__fade="property: material.opacity; from: 0; dur:1000; easing: linear;"></a-image>
         </a-entity>
 
         <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
